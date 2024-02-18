@@ -1,0 +1,439 @@
+@import 'variables';
+@import 'mixins';
+
+
+@font-face {
+    font-family: "regular";
+    src: url(assets/fonts/SF-Pro-Display-Regular.otf);
+}
+@font-face {
+    font-family: "bold";
+    src: url(assets/fonts/SF-Pro-Display-Regular.otf);
+}
+
+* , *::before , *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'bold';
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+}
+
+.DOMCL{
+    width: 100%;
+    height: 100%;
+    @include pos(0,0);
+    @include flex(column,center,center,0.75rem);
+    background: $white2;
+    img{
+        width: 12rem;
+        height: 12rem;
+        animation: bounce 2s;
+        animation-timing-function: ease;
+    }
+
+    h1{
+        @include font(4rem,900);
+        display: flex;
+        span{
+            transition: all ease-out 0.6s;
+            opacity: 0;
+          
+        }
+    }
+
+    p{
+        @include font(1.25rem,500);
+        opacity: 0;
+        transition: all ease-out 0.3s;
+        transform: translateY(-50px);
+
+
+    }
+    .btn{
+        @include card($gradient1,15px,0.75rem);
+        @include font(1.25rem,500,$white2);
+        @include backgroundSlide(300%,0%,100%);
+        transition: all ease-out 0.3s;
+        opacity: 0;
+        @include flex(row,center,center,0.25rem);
+        padding-right: 1.25rem;
+        transform: translateY(-50px);
+        cursor: pointer;
+        .lordicon{
+            transform: rotate(90deg);
+        }
+    }
+    z-index: 2;
+}
+.app{
+    scroll-behavior: smooth;
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: $white2;
+    z-index: 1;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+        width: 1em;
+        height: 1.3em;
+      }
+    
+    &::-webkit-scrollbar-track{
+    background: #e8e8e8;
+    }
+    &::-webkit-scrollbar-thumb{
+    background: #ddd;
+    border-radius:7px;
+
+
+    }
+    @include flex(column,start,start);
+
+
+    header{
+        width: calc(100% - 1em);
+        z-index: 3;
+        height: 5rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        @include flex(row,space-between,center,0.25rem);
+        background: $white2;
+        padding: 0 3rem;
+
+        .nlogo{
+            @include flex(row,start,center,0.5rem);
+
+            h1{
+                @include font(2rem,900);
+                font-family: 'bold';
+            }
+            .logo{
+                width: 3.5rem;
+                height: 3.5rem;
+    
+            }
+        }
+        nav{
+            @include flex(row,end,center,3rem);
+            
+            a{
+                text-decoration: none;
+                @include flex(column,center,center,0rem);
+                span{
+                    @include font(1rem,500);
+                }
+            }
+            .login{
+                @include card($gradient1,15px,0.5rem 0.75rem,none);
+                @include backgroundSlide(300%,100%,0%);
+                transition: all ease-out 0.3s;
+                @include flex(row,center,center,0.25rem);
+                padding-right: 1.25rem;
+                cursor: pointer;
+                
+                span{
+                @include font(1.125rem,500,$white2);
+
+                }
+            }
+        }
+    }
+
+
+    .main{
+        width: 100%;
+        height: 100%;
+        @include flex(row,center,center);
+        article{
+            height: 100%;
+            width: 100%;
+            flex: 1;
+            padding:12rem 4rem;
+            @include flex(column,center,center,1rem);
+            *{
+            text-align: center;
+            }
+            .img1{
+                width: 100%;
+                height: auto;
+            }
+            .img2{
+                width: 30%;
+                height: auto;
+            }
+            
+            h1{
+                font-family: 'bold';
+                @include font(2.5rem,900);
+                color: $black1;
+            }
+            p{
+                @include font(1.25rem,500);
+
+            }
+            a{
+                @include card($gradient1,15px,0.5rem 0.75rem,none);
+                @include backgroundSlide(300%,100%,0%);
+                transition: all ease-out 0.3s;
+                @include flex(row,center,center,0.25rem);
+                padding-right: 1.5rem;
+                cursor: pointer;
+                text-decoration: none;
+                width: 70%;
+                span{
+                @include font(1.125rem,500,$white2);
+
+                }
+            }
+        }
+        .a1{
+            display: block;
+        }
+
+    }
+
+    .news{
+        width: 100%;
+        height: auto;
+        background: $white1;
+        @include flex(row,center,center,3rem,wrap);
+        padding: 5rem;
+        
+        .card{
+            flex: 1;
+            min-width: 400px;
+            height: 500px;
+            @include card($white2,15px, 2rem,$scale:1);
+            @include flex(column,start,start,0.75rem);
+            
+            .square{
+                width: 100%;
+                height: 225px;
+                @include card($color1,15px, 1rem,$scale:1);
+                transition: all ease 0.3s;
+                transform: translateY(-3rem);
+                &:nth-child(1){
+                    background-image: url(assets/backgrounds/u1.svg);
+                }
+                &:nth-child(2){
+                    background-image: url(assets/backgrounds/u2.svg);
+                }
+                &:nth-child(3){
+                    background-image: url(assets/backgrounds/u2.svg);
+                }
+                &:nth-child(4){
+                    background-image: url(assets/backgrounds/u2.svg);
+                }
+            }
+            h2{
+                @include font(1.25rem,900);
+            }
+            p{
+                @include font(1rem,200);
+            }
+            button{
+                @include card($gradient1,15px,0.5rem 1.25rem,none);
+                @include backgroundSlide(300%,100%,0%);
+                transition: all ease-out 0.3s;
+                @include flex(row,center,center,0.25rem);
+                cursor: pointer;
+                width: max-content;
+                @include font(1.125rem,500,$white2);
+
+            }
+        }
+        
+          
+    }
+
+    .joinus{
+        width: 100%;
+        height: 100vh;
+        @include flex(row,center,center);
+        background: $color1;
+        .card{
+            @include flex(row,start,center);
+            @include card($white2,$radius3, 2rem,none,1);
+            height: 70%;
+            width: 80%;
+            .a1{
+                max-width: 100%;
+                height: 100%;
+                padding: 2rem;
+                background: $white1;
+                border-top-left-radius: 35px;
+                border-bottom-left-radius: 35px;
+                img{
+                    width: auto;
+                    height: 100%;
+                }
+            }
+            .a2{
+                max-width: 800px;
+                width: 100%;
+                height: 100%;
+                padding: 2rem;
+                @include flex(column,center,start,0.75rem);
+                h1{
+                    @include font(2.5rem,900);
+                }
+                p{
+                    @include font(1.25rem,500);
+                }
+                input{
+                    width: 100%;
+                    @include card($white2,15px,1rem 1.25rem,none,1);
+                    border: solid 1px #ddd;
+                }
+                a , button{
+                    @include card($gradient1,15px,0.5rem 0.75rem,none);
+                    @include backgroundSlide(300%,100%,0%);
+                    transition: all ease-out 0.3s;
+                    @include flex(row,center,center,0.25rem);
+                    padding-right: 1.5rem;
+                    cursor: pointer;
+                    text-decoration: none;
+                    width: 100%;
+                    span{
+                    @include font(1.125rem,500,$white2);
+    
+                    }
+                }
+            }
+        }
+        
+        
+    }
+      
+}
+@keyframes blob {
+    0%{
+      d:path("M21,-36.1C26.9,-33,31.1,-26.7,33.3,-20.2C35.5,-13.6,35.6,-6.8,34.5,-0.6C33.4,5.6,31.2,11.1,27.7,15.5C24.3,19.8,19.7,22.9,14.8,25.3C10,27.6,5,29.2,-1.1,31.1C-7.2,33,-14.4,35.2,-20.1,33.4C-25.8,31.5,-29.9,25.6,-32.6,19.4C-35.2,13.1,-36.4,6.6,-35.5,0.5C-34.7,-5.6,-31.8,-11.1,-29.5,-18C-27.2,-24.8,-25.4,-32.8,-20.5,-36.5C-15.7,-40.3,-7.9,-39.7,-0.1,-39.5C7.6,-39.2,15.1,-39.3,21,-36.1Z");
+    }
+    20%{
+      d:path("M23.2,-39.6C30.2,-36,36.2,-30.2,40.4,-23.2C44.5,-16.2,46.9,-8.1,45.3,-0.9C43.7,6.3,38.1,12.5,33.7,19.1C29.3,25.7,26.1,32.6,20.6,34.7C15.2,36.7,7.6,33.8,0.6,32.8C-6.5,31.9,-13,32.8,-19.3,31.3C-25.6,29.8,-31.7,25.8,-33.6,20.2C-35.5,14.5,-33.3,7.3,-33,0.2C-32.6,-6.9,-34.1,-13.7,-31.4,-18.1C-28.8,-22.4,-21.9,-24.2,-16,-28.4C-10,-32.6,-5,-39.2,1.5,-41.8C8.1,-44.5,16.1,-43.2,23.2,-39.6Z");
+    }
+    40%{
+      d:path("M17.9,-31.4C22.2,-28.6,23.8,-21.6,27.7,-15.7C31.5,-9.8,37.5,-4.9,38.8,0.7C40,6.4,36.5,12.7,32.3,18C28.1,23.3,23.3,27.6,17.7,29.7C12.2,31.9,6.1,32,-0.4,32.7C-7,33.4,-13.9,34.8,-18.9,32.4C-23.9,29.9,-26.9,23.6,-30.5,17.6C-34.1,11.5,-38.3,5.8,-38.1,0.1C-37.9,-5.5,-33.2,-11,-29.2,-16.3C-25.1,-21.5,-21.7,-26.6,-16.9,-29.2C-12.2,-31.7,-6.1,-31.8,0.4,-32.4C6.8,-33.1,13.7,-34.3,17.9,-31.4Z");
+    }
+    60%{
+      d:path("M17.9,-28.5C25,-26.9,33.9,-25.8,39.2,-21.1C44.5,-16.5,46.1,-8.2,45.5,-0.4C44.9,7.5,42,15,37.2,20.5C32.4,26,25.7,29.4,19.1,33.7C12.6,38,6.3,43.3,-0.3,43.8C-7,44.4,-13.9,40.3,-20.1,35.8C-26.3,31.3,-31.8,26.4,-35,20.4C-38.1,14.3,-39,7.2,-38,0.6C-37,-6,-34.1,-12,-30.6,-17.4C-27.1,-22.8,-22.9,-27.6,-17.7,-30.4C-12.5,-33.2,-6.2,-34,-0.4,-33.3C5.4,-32.5,10.7,-30.2,17.9,-28.5Z");
+    }
+    80%{
+      d:path("M17.8,-30.3C23.3,-27.6,28.3,-23.4,31.9,-18.1C35.6,-12.8,38,-6.4,38.5,0.3C38.9,6.9,37.5,13.8,34.3,20.1C31.2,26.3,26.4,31.9,20.4,33.5C14.4,35.1,7.2,32.7,-0.3,33.3C-7.8,33.8,-15.7,37.3,-21.1,35.3C-26.5,33.4,-29.6,26.1,-33.8,19.3C-38,12.6,-43.3,6.3,-44,-0.4C-44.8,-7.1,-40.8,-14.2,-36.2,-20.2C-31.5,-26.1,-26,-30.9,-19.9,-33.3C-13.7,-35.6,-6.9,-35.5,-0.4,-34.9C6.1,-34.2,12.2,-33,17.8,-30.3Z");
+    }
+    100%{
+      d:path("M21,-36.1C26.9,-33,31.1,-26.7,33.3,-20.2C35.5,-13.6,35.6,-6.8,34.5,-0.6C33.4,5.6,31.2,11.1,27.7,15.5C24.3,19.8,19.7,22.9,14.8,25.3C10,27.6,5,29.2,-1.1,31.1C-7.2,33,-14.4,35.2,-20.1,33.4C-25.8,31.5,-29.9,25.6,-32.6,19.4C-35.2,13.1,-36.4,6.6,-35.5,0.5C-34.7,-5.6,-31.8,-11.1,-29.5,-18C-27.2,-24.8,-25.4,-32.8,-20.5,-36.5C-15.7,-40.3,-7.9,-39.7,-0.1,-39.5C7.6,-39.2,15.1,-39.3,21,-36.1Z");
+    }
+  }
+  
+
+@keyframes bounce {
+    0%{
+      transform: translate(-600px,-700px) rotate(-360deg);
+    }
+   
+    25%{
+      transform: translate(-400px,0px) rotate(0deg);
+      animation-timing-function: ease-out;
+  
+    }
+    
+    
+    100%{
+      transform: translate(0px,0px) rotate(360deg);
+    }
+  }
+  
+
+@media screen and (max-width:1000px){
+    .app{
+        header{
+            justify-content: center;
+            padding: 0 1rem;
+            nav{
+                width: 100%;
+                justify-content: center;
+            
+            }
+            .nlogo{
+                display: none;
+            }
+            
+        }
+        .main{
+            .a1{
+                display: none;
+            }
+        }
+        .joinus{
+            height: auto;
+            padding: 2rem;
+            .card{
+                flex-direction: column;
+                height: 100%;
+                width: 80%;
+                .a1{
+                    border-top-left-radius: 35px;
+                    border-bottom-left-radius: 0;
+                    border-top-right-radius: 35px;
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width:600px){
+
+    .app{
+        header{
+           
+            nav{
+               
+                .login{
+                    display: none;
+                }
+            }
+        }
+        .joinus{
+            height: auto;
+            padding: 1rem;
+            .card{
+                flex-direction: column;
+                height: 100%;
+                width: 100%;
+                padding: 1rem;
+                .a1{
+                    border-top-left-radius: 35px;
+                    border-bottom-left-radius: 0;
+                    border-top-right-radius: 35px;
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .a2{
+                    padding: 1rem;
+
+                }
+            }
+        }
+    }
+
+}

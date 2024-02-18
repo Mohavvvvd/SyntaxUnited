@@ -1,0 +1,57 @@
+
+
+@mixin pos($x , $y){
+    position: absolute;
+    top: $y;
+    left: $x;
+}
+
+
+
+@mixin backgroundSlide($size , $from , $to){
+    background-size: $size;
+    background-position: $from;
+    &:hover{
+        background-position: $to;
+    }
+}
+
+
+@mixin gradientTextColor($color){
+    background: $color;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+
+@mixin flex($direction , $justify , $align , $gap:0 , $wrap:no-wrap){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+}
+
+
+@mixin card($background ,$radius , $padding , $shadow:1px 1px 20px rgba(0, 0, 0, 0.10),$scale:0.98){
+    border: none;
+    background: $background;
+    border-radius: $radius;
+    padding: $padding;
+    box-shadow: $shadow;
+    &:hover{
+        transform: scale($scale);
+    }
+}
+
+@mixin font($size , $weight , $color:$black1){
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+@function calculer($width1 , $white2){
+    @return calc($width1 - $width2);
+}
